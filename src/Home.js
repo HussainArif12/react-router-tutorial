@@ -3,7 +3,7 @@ function Home() {
   return (
     <>
       <h1>Welcome home!</h1>
-      <h1>Type of coffees:</h1>
+      {/* <h1>Type of coffees:</h1>
       <ul>
         <li>
           <Link to={"/coffee/hot"}>Hot Coffees</Link>
@@ -11,7 +11,7 @@ function Home() {
         <li>
           <Link to="/coffee/iced">Cold coffees</Link>
         </li>
-      </ul>
+      </ul> */}
     </>
   );
 }
