@@ -1,6 +1,11 @@
 import logo from "./logo.svg";
 import "./App.css";
-import { Switch, BrowserRouter as Router, Route } from "react-router-dom";
+import {
+  Switch,
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import Home from "./Home";
 import Coffee from "./Coffee";
 import CoffeeInfo from "./CoffeeInfo";
@@ -14,6 +19,8 @@ function App() {
         <Nav />
         <Switch>
           <Route path="/" exact component={Home}></Route>
+          <Route path="/about" component={About}></Route>
+          <Redirect from="/home" to="/" />
           <Route path="/coffee/:name" exact component={Coffee}></Route>
           <Route path="/coffee/:name/:id" exact component={CoffeeInfo}></Route>
         </Switch>
