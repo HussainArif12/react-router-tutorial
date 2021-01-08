@@ -1,26 +1,32 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-function CoffeeInfo({ match }) {
+import { useParams } from "react-router-dom";
+function CoffeeInfo() {
+  let params = useParams();
   const [data, setData] = useState({});
   const [ingredients, setIngredients] = useState([]);
   const fetchData = async () => {
-    const fetchedData = await fetch(
-      `https://api.sampleapis.com/coffee/${match.params.name}/${match.params.id}`
-    );
-    const jsonData = await fetchedData.json();
-    setData(jsonData);
-    console.log(jsonData);
-    setIngredients(jsonData.ingredients);
+    fetch(`https://api.sampleapis.com/coffee/${params.type}/${params.id}`)
+      .then((data) => data.json())
+      .then((data) => {
+        console.log(data);
+        setData(data);
+        setIngredients(data.ingredients);
+      });
   };
   useEffect(() => {
     fetchData();
-    console.log(ingredients);
+    console.log(params);
+    //console.log(ingredients);
   }, []);
   return (
     <>
       <h1>{data.title}</h1>
       <p>{data.description}</p>
-      <p>{ingredients}</p>
+
+      <p>ingredients</p>
+      {ingredients.map((item) => (
+        <p>{item}</p>
+      ))}
     </>
   );
 }

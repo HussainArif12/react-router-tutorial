@@ -19,10 +19,10 @@ function App() {
         <Nav />
         <Switch>
           <Route path="/" exact component={Home}></Route>
-          <Route path="/about" component={About}></Route>
           <Redirect from="/home" to="/" />
-          <Route path="/coffee/:name" exact component={Coffee}></Route>
-          <Route path="/coffee/:name/:id" exact component={CoffeeInfo}></Route>
+          <Route path="/about" component={About}></Route>
+          <Route path="/coffee/:type" exact component={Coffee}></Route>
+          <Route path="/coffee/:type/:id" component={CoffeeInfo}></Route>
         </Switch>
       </Router>
     </div>
